@@ -1,0 +1,39 @@
+.piece-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+main {
+  margin: 0px 50px 50px 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.gameboard {
+  display: flex;
+  flex-direction: row;
+}
+
+.game-play-button{
+  font-size: 14px;
+  border: 0px;
+  border-radius: 3px;
+  margin: 20px;
+  height: 40px;
+  width: 100px;
+}
+
+.game-play-button:active {
+  background-color: rgb(205, 205, 205);
+  transform: translateY(3px);
+}
+
+.current-guess {
+  height: 30px;
+  font-size: 36px;
+}
