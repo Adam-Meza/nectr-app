@@ -41,5 +41,5 @@ export const Gameboard : React.FC<GameboardProps> = ({randomizeLetters, deleteLa
         <button className ="game-play-button" onClick = {() => handleSubmit()}>ENTER</button>
       </div>
     </main>
-  );
-};
+  )
+}
