@@ -1,6 +1,6 @@
 import React from "react";
 import { Boardpiece } from "../Boardpiece/Boardpiece";
-import './gameboard.css'
+import './Gameboard.css'
 
 interface GameboardProps {
   center: String;

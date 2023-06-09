@@ -1,5 +1,5 @@
 import React from "react";
-import './meaning-card.css'
+import './MeaningCard.css'
 import { MeaningProps } from "../../utilites";
 
 interface MeaningCardProps {

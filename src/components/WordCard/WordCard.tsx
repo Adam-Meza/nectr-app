@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import './word-card.css';
+import './WordCard.css';
 import { DefinitionProps } from "../../utilites";
  
 
