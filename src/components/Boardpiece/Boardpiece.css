@@ -4,4 +4,16 @@
   height: 100px;
   margin: 3px;
   border-radius: 50%;
+  font-size: 30px;
+  transform: translateY(2px);
+}
+
+#center {
+  background-color: rgb(93, 128, 129);
+  color: white
+}
+
+.boardpiece:active {
+  background-color: rgb(205, 205, 205);
+  transform: translateY(5px);
 }

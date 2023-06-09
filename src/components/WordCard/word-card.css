@@ -1,0 +1,29 @@
+.word-card {
+  font-size: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: grey 1px solid;
+  padding: 7px;
+  height: 30px;
+  width: 90%;
+  margin-bottom: 4px
+
+}
+
+.favorite-button, .unfavorite-button {
+  padding: 2px;
+  width: 80px;
+  border: none;
+  color: white;
+}
+
+.favorite-button {
+  background-color: rgb(48, 156, 48);
+}
+
+.unfavorite-button {
+  background-color: rgb(92, 106, 175);
+}
+
