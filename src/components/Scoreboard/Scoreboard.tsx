@@ -1,14 +1,28 @@
 import React, {useState} from "react";
-import './/Scoreboard.css'
+import './Scoreboard.css'
+import { WordCard } from "../WordCard/WordCard";
+import { DefinitionProps } from "../../utilites";
 
-// interface ScoreboardProps {
-//   props? : any
-// }
+interface ScoreboardProps {
+  answers : DefinitionProps[];
+  addFavorite: (definition : DefinitionProps) => void;
+  unfavorite : (word : any) => void;
+  checkFavorites: (word : String) => Boolean
+};
 
-export const Scoreboard  = () => {
+export const Scoreboard : React.FC <ScoreboardProps> = ({answers, addFavorite, unfavorite, checkFavorites}) => {
+  const correctAnswers = answers.map(answer => (
+    <WordCard 
+      definition = {answer}
+      addFavorite = {addFavorite}
+      unfavorite = {unfavorite}
+      checkFavorites = {checkFavorites}
+      />
+  ));
+  
   return (
     <div className='scoreboard'>
-      test
+      {correctAnswers}
     </div>
-  )
-}
+  );
+};

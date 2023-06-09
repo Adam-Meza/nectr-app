@@ -1,50 +1,45 @@
-import React, { useState } from "react";
+import React from "react";
 import { Boardpiece } from "../Boardpiece/Boardpiece";
-import './/gameboard.css'
+import './gameboard.css'
 
 interface GameboardProps {
-  center: any
-  letters: any
-  words: String[]
-  checkGuess : (guess : String ) => boolean
-}
+  center: String;
+  letters: String[];
+  currentGuess: String;
+  deleteLastLetter: () => void;
+  handleSubmit: () => void;
+  updateCurrentGuess : (letter : String) => void;
+  randomizeLetters : () => void;
+};
 
-export const Gameboard : React.FC<GameboardProps> = ({center, letters, checkGuess}) => {
-  const [currentGuess, setGuess] = useState<String[]>([])
+export const Gameboard : React.FC<GameboardProps> = ({randomizeLetters, deleteLastLetter, handleSubmit, currentGuess, center, letters, updateCurrentGuess}) => {
+  const boardPieces = letters.map((letter : String, index : number) => {
+    return <Boardpiece updateCurrentGuess= {updateCurrentGuess} letter ={letter} key ={index}/>
+  });
 
-  const handleSubmit = () => {
-    checkGuess(currentGuess.join())
-    setGuess([])
-  }
-
-  const updateCurrentGuess = (letter : String) => {
-    setGuess([...currentGuess, letter])
-  }
-
-  letters = letters.split('')
   return (
-    <section>
-        <h2>{currentGuess}</h2>
+    <main>
+        <h2 className="current-guess">{currentGuess}</h2>
       <section className = 'gameboard'>
       <div className="piece-container">
-        <Boardpiece updateCurrentGuess= {updateCurrentGuess} letter = {letters[0]}/>
-        <Boardpiece updateCurrentGuess= {updateCurrentGuess} letter = {letters[1]}/>
+        {boardPieces[0]}
+        {boardPieces[1]}
       </div>
       <div className="piece-container">
-        <Boardpiece updateCurrentGuess= {updateCurrentGuess} letter = {letters[2]}/>
-        <Boardpiece updateCurrentGuess= {updateCurrentGuess} letter = {center} center = {true}/>
-        <Boardpiece updateCurrentGuess= {updateCurrentGuess} letter = {letters[3]}/>
+        {boardPieces[2]}
+        <Boardpiece updateCurrentGuess= {updateCurrentGuess} letter = {center} id='center'/>
+        {boardPieces[3]}
       </div>
       <div className="piece-container">
-        <Boardpiece updateCurrentGuess= {updateCurrentGuess} letter = {letters[4]}/>
-        <Boardpiece updateCurrentGuess= {updateCurrentGuess} letter = {letters[5]}/>
+        {boardPieces[4]}
+        {boardPieces[5]}
       </div>
       </section>
       <div className ='button-container'>
-        <button onClick = {() => handleSubmit()}></button>
-        {/* <button></button>
-        <button></button> */}
+        <button className ="game-play-button" onClick={()=> deleteLastLetter()}>DELETE</button>
+        <button className ="game-play-button" onClick ={()=> randomizeLetters()}>RANDOMIZE</button>
+        <button className ="game-play-button" onClick = {() => handleSubmit()}>ENTER</button>
       </div>
-    </section>
-  )
-}
+    </main>
+  );
+};

@@ -1,0 +1,45 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100vw;
+  height: 8%;
+  padding: 10px;
+  padding-top:30px
+  /* position: absolute; */
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  padding: 10px 20px 10px 20px;
+  width: auto;
+  height: auto;
+}
+
+.link.active {
+  font-weight: bold;
+  text-decoration: none;
+  color: inherit;
+}
+
+.title{
+  font-size: 36px;
+  padding: 13px;
+  border: 2px solid orange
+}
+
+.nav-link {
+  color: #333;
+  border: 1px black solid;
+}
+
+.link-container {
+  width:30%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}

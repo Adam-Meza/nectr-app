@@ -1,11 +1,13 @@
 import React from "react";
-
+import './error-message.css'
 interface ErrorProps {
-  message: string
+  message: String
 }
 
 export const ErrorMessage : React.FC<ErrorProps> = ({message}) => {
-  return <div>
-
-  </div>
+  return (
+    <div className="error-card">
+      <p>{message}</p>
+    </div>
+  )
 }
