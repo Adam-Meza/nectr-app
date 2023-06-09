@@ -1,0 +1,16 @@
+.piece-container {
+  border: 1px green solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.gameboard {
+  display: flex;
+  flex-direction: row;
+}
+
+button {
+  height: 30px;
+  width: 30px;
+}
