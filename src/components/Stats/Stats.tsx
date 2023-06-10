@@ -1,9 +1,9 @@
 import React from "react";
-import { DefinitionProps } from "../../utilites";
+import { WordProps } from "../../utilites";
 
 interface StatsProps {
   total: String[];
-  correctAnswers: DefinitionProps[];
+  correctAnswers: WordProps[];
 }
 
 export const Stats : React.FC<StatsProps> = ({total, correctAnswers}) => {

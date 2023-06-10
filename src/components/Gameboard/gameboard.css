@@ -9,8 +9,8 @@ main {
   margin: 0px 50px 50px 100px;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: center;
   height: 100%;
 }
 
@@ -34,6 +34,7 @@ main {
 }
 
 .current-guess {
+  color: white;
   height: 30px;
   font-size: 36px;
 }

@@ -4,7 +4,7 @@ import { Gameboard } from '../Gameboard/Gameboard';
 import { ErrorMessage } from '../ErrorMessage/ErrorMessage';
 import { Switch, Route } from 'react-router-dom';
 import { fetchDefinition, fetchLetters } from '../../fetches';
-import { cleanDefinitionData, DefinitionProps, cleanGameData } from '../../utilites';
+import { cleanDefinitionData, WordProps, cleanGameData } from '../../utilites';
 import { Favorites } from '../Favorites/Favorites';
 import { Scoreboard } from '../Scoreboard/Scoreboard';
 import { DefinitionCard } from '../DefinitionCard/DefinitionCard';
@@ -17,9 +17,9 @@ const App = () => {
         [letters, setLetters] = useState<String[]>([]),
         [words, setWords] = useState<String[]>([]),
         [currentGuess, setGuess] = useState<String>(''),
-        [answers, setAnswers] = useState<DefinitionProps[]>([]),
-        [favorites, setFavorites] = useState<DefinitionProps[]>([]),
-        [definition, setDefinition] = useState<DefinitionProps>(
+        [answers, setAnswers] = useState<WordProps[]>([]),
+        [favorites, setFavorites] = useState<WordProps[]>([]),
+        [definition, setDefinition] = useState<WordProps>(
           { meanings: [{partOfSpeech: '', definitions: [""]}], word: "", phonetic: ""});
 
   // Fetch Calls
@@ -35,7 +35,7 @@ const App = () => {
         throw new Error();
       }
 
-      const json = await data.json()
+      const json = await data.json();
       const { letters, words, center } = cleanGameData(json);
 
       setCenter(center);
@@ -105,19 +105,19 @@ const App = () => {
   };
 
   //Functions for Word Cards
-  const unfavorite = (wordToUnfavorite : DefinitionProps) => {
+  const unfavorite = (wordToUnfavorite : WordProps) => {
     const updatedFavorites = favorites.filter(word => word !== wordToUnfavorite);
     setFavorites([...updatedFavorites]);
   };
 
-  const addFavorite = (newDefinition : DefinitionProps ) => {
+  const addFavorite = (newDefinition : WordProps ) => {
     if (!favorites.includes(newDefinition)) {
       setFavorites([...favorites, newDefinition]);
     };
   };
 
   const checkFavorites = (word : String) => {
-    return favorites.find(fav => fav.word === word ) ? true : false
+    return favorites.find(fav => fav.word === word ) ? true : false;
   };
   
   return (

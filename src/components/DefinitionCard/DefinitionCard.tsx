@@ -1,10 +1,10 @@
 import React from "react";
 import './DefinitionCard.css'
-import { DefinitionProps, MeaningProps } from "../../utilites";
+import { WordProps, MeaningProps } from "../../utilites";
 import { MeaningCard } from "../MeaningCard/MeaningCard";
 
 interface DefinitionCardProps {
-  definition: DefinitionProps;
+  definition: WordProps;
 };
 
 export const DefinitionCard : React.FC<DefinitionCardProps> = ({definition}) => {
@@ -12,7 +12,7 @@ export const DefinitionCard : React.FC<DefinitionCardProps> = ({definition}) => 
   const meaningCards = meanings.map((meaningInst : MeaningProps, index : number) => {
     const {partOfSpeech, definitions} = meaningInst;
     return <MeaningCard partOfSpeech={partOfSpeech} meaning ={definitions} key = {index}/>;
-  });
+  }).slice(0,2);
 
   return (
     <div className="definition">
