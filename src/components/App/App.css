@@ -43,3 +43,52 @@ button :active {
   background-color: rgb(205, 205, 205);
   transform: translateY(5px);
 }
+
+@media (max-width : 1000px) {
+  .home-display {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  main {
+    justify-content: flex-start;
+    height: auto;
+    margin: 20px;
+  }
+
+  .button-container {
+    justify-content: center;
+  }
+
+  .game-play-button {
+    padding: 2px;
+    margin: 10px
+  }
+
+  aside {
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    width: 50%;
+  }
+
+  h2 {
+    margin: 0px;
+  }
+
+  .header {
+    justify-content: space-evenly;
+  }
+  .link-container {
+    width: 50%;
+    justify-content: space-around;
+  }
+
+  .current-guess {
+    margin-bottom: 10px
+  }
+}
