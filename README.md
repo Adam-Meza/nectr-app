@@ -1,7 +1,7 @@
 # Nectr
 Designed and built by Adam Meza | [LinkedIn](https://www.linkedin.com/in/adam-meza/) | [GitHub](https://github.com/Adam-meza
 
-![Gif of Nectr App]([https://giphy.com/gifs/gbkj6anaomKW86eFGx](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjlhYTUwY2RhYzdmYmFjYzVlYmZjZjcyZmY3MWEwNzhhZTJlY2YzNSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/gbkj6anaomKW86eFGx/giphy.gif))
+![Gif of Nectr App](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjlhYTUwY2RhYzdmYmFjYzVlYmZjZjcyZmY3MWEwNzhhZTJlY2YzNSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/gbkj6anaomKW86eFGx/giphy.gif)
 
 ## Abstract
 Nectr is a react web-based application that seeks to solve the problem of boredom while helping to expand the vocabulary of the user. Upon inputing correct answer users will see the dictionary definition of their answer as well as their answer displayed on the correct answers box. 
