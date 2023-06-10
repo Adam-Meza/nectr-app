@@ -5,12 +5,11 @@
   align-items: center;
   width: 100vw;
   height: 8%;
-  padding: 10px;
   padding-top:30px
-  /* position: absolute; */
 }
 
 .link {
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,18 +22,19 @@
 .link.active {
   font-weight: bold;
   text-decoration: none;
-  color: inherit;
+  color: white;
 }
 
 .title{
   font-size: 36px;
   padding: 13px;
-  border: 2px solid orange
+  border: 2px solid #d17225;
 }
 
 .nav-link {
-  color: #333;
-  border: 1px black solid;
+  color: white;
+  border: 1px white solid;
+  margin: 5px;
 }
 
 .link-container {

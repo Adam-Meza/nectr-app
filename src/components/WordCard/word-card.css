@@ -4,7 +4,8 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border: grey 1px solid;
+  border: white 1px solid;
+  color: white;
   padding: 7px;
   height: 30px;
   width: 90%;
@@ -13,17 +14,18 @@
 }
 
 .favorite-button, .unfavorite-button {
-  padding: 2px;
+  padding: 2px 0px;
   width: 80px;
   border: none;
   color: white;
 }
 
 .favorite-button {
-  background-color: rgb(48, 156, 48);
+  color: black;
+  background-color: rgb(255, 255, 255);
 }
 
 .unfavorite-button {
-  background-color: rgb(92, 106, 175);
+  background-color: #d17225;
 }
 

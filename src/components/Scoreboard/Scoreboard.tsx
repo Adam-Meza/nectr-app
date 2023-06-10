@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import './Scoreboard.css'
 import { WordCard } from "../WordCard/WordCard";
-import { DefinitionProps } from "../../utilites";
+import { WordProps } from "../../utilites";
 
 interface ScoreboardProps {
-  answers : DefinitionProps[];
-  addFavorite: (definition : DefinitionProps) => void;
+  answers : WordProps[];
+  addFavorite: (definition : WordProps) => void;
   unfavorite : (word : any) => void;
   checkFavorites: (word : String) => Boolean
 };

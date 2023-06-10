@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
 import './word-card.css';
-import { DefinitionProps } from "../../utilites";
+import { WordProps } from "../../utilites";
  
 
 interface WordCardProps {
-  definition: DefinitionProps;
+  definition: WordProps;
   unfavorite: (word : any) => void
-  addFavorite: (definition : DefinitionProps) => void;
+  addFavorite: (definition : WordProps) => void;
   checkFavorites: (word : String) => Boolean
 };
 

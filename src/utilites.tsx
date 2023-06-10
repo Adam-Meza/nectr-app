@@ -1,4 +1,4 @@
-export interface DefinitionProps {
+export interface WordProps {
   meanings: MeaningProps[];
   phonetic: String;
   word: String;
@@ -16,7 +16,7 @@ export interface GameDataFetchProps {
   words: Number;
 };
 
-export const cleanDefinitionData = (definition : DefinitionProps) => {
+export const cleanDefinitionData = (definition : WordProps) => {
   const selectedMeanings = definition.meanings.map((meaning : MeaningProps) => {
     return {
       partOfSpeech: meaning.partOfSpeech,
