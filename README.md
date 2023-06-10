@@ -1,5 +1,5 @@
 # Nectr
-Designed and built by Adam Meza | [LinkedIn](https://www.linkedin.com/in/adam-meza/) | [GitHub](https://github.com/Adam-meza
+Designed and built by Adam Meza | [LinkedIn](https://www.linkedin.com/in/adam-meza/) | [GitHub](https://github.com/Adam-meza)
 
 ![Desktop view](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzg2ZjkxOTQ1MTdlYjJhNmI5ZmViZGQzNmNjNDYyNmI5Njk3ZjRjZCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/LSwcZRmhv1zLdE7xLw/giphy.gif)
 ![Gif of Nectr App](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjlhYTUwY2RhYzdmYmFjYzVlYmZjZjcyZmY3MWEwNzhhZTJlY2YzNSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/gbkj6anaomKW86eFGx/giphy.gif)
