@@ -78,17 +78,17 @@ button :active {
 
   h2 {
     margin: 0px;
-  }
+  };
 
   .header {
     justify-content: space-evenly;
-  }
+  };
   .link-container {
     width: 50%;
     justify-content: space-around;
-  }
+  };
 
   .current-guess {
     margin-bottom: 10px
-  }
-}
+  };
+};
