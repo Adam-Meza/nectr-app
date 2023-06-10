@@ -29,11 +29,15 @@ const App = () => {
 
   const fetchData = async () => {
     try {
-      const json = await fetchLetters();
-      if (!json.center) {
-        throw new Error('Invalid response format');
+      const data = await fetchLetters();
+
+      if (!data.ok) {
+        throw new Error();
       }
+
+      const json = await data.json()
       const { letters, words, center } = cleanGameData(json);
+
       setCenter(center);
       setLetters(letters);
       setWords(words);
@@ -44,15 +48,18 @@ const App = () => {
  
   const getDefinition = async (word: String) => {
     try {
-      const json = await fetchDefinition(word);
-      if (json.title) {
+      const data = await fetchDefinition(word);
+      if (!data.ok) {
         setAnswers((prevAnswers) => [...prevAnswers, { meanings: [{partOfSpeech: '', definitions: [""]}], word: word, phonetic: ""}])
-        throw (json);
-      } else {
+        throw (data);
+      }
+
+        const json = await data.json();
         const cleanedDefinition = cleanDefinitionData(json[0]);
+
         setDefinition(cleanedDefinition);  
         setAnswers((prevAnswers) => [...prevAnswers, cleanedDefinition]);  
-      }
+
     } catch (error : any) {
       setError(`${error.message}`);
     }
