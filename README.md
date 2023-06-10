@@ -1,46 +1,41 @@
-# Getting Started with Create React App
+# Nectr
+Designed and built by Adam Meza | [LinkedIn](https://www.linkedin.com/in/adam-meza/) | GitHub (https://github.com/Adam-meza)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Abstract
+Nectr is a react web-based application that seeks to solve the problem of boredom while helping to expand the vocabulary of the user. Upon inputing correct answer users will see the dictionary definition of their answer as well as their answer displayed on the correct answers box. 
 
-## Available Scripts
+## How to Play the Game
+- The objective of the game is to create as many valid English words as possible using the given letters.
+- The center letter is a required element for every word you form. It is denoted by a darker color and must be included in every word.
+- Each word you create must be at least four letters long.
+- Only valid English words are accepted. Proper nouns, hyphenated words, or abbreviations are not allowed.
+- You can use any letter from the grid multiple times, except for the center letter, which must be used in every word.
 
-In the project directory, you can run:
+## Tech Stack
+- React 
+- Typescript
+- [Free Bee API](https://freebee.fun/api.html)
+- [Free Dictionary API](https://dictionaryapi.dev/)
 
-### `npm start`
+## Context
+This project was made over a 5 day sprint as the final project of the Turing Front-End program during my third module. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Learning Goals
+The learning goals for this project were:
+  - challenge my knowledge of asynch JavaScript, Cypress testing, React architecture, and TypeScript
+  - Practice building an application in a short time period
+  - practice github workflow including merges, PR requests
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Installation
+  Play the game in browser [here](https://nectr-app-veed-ko9w0qph2-adam-meza.vercel.app/) 
 
-### `npm test`
+  1. Fork this repository to your GitHub account.
+  2. Copy SSH key on GitHub inside the code dropdown.
+  3. Using the terminal, run git clone [SSH key here].
+  4. cd into the repository.
+  5. Run npm install 
+  6. Run npm start
+  7. Click the hyperlink where the project is running to launch the application in the web browser or enter http://localhost:3000/ into your web browser.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
