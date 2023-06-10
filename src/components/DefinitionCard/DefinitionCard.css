@@ -20,5 +20,6 @@
 }
 
 .part-of-speech {
-  margin: 0px
+  margin: 0px;
+  height: auto;
 }
