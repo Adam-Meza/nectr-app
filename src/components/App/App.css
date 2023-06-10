@@ -76,13 +76,14 @@ button :active {
     width: 50%;
   }
 
-  h2 {
+  .word {
     margin: 0px;
   };
 
   .header {
     justify-content: space-evenly;
   };
+
   .link-container {
     width: 50%;
     justify-content: space-around;

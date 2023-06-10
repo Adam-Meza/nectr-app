@@ -129,13 +129,13 @@ const App = () => {
           render = { () => (
             <section className ='home-display'>
               <Gameboard 
-              currentGuess = {currentGuess}
-              letters= {letters}
-              center={center}
-              handleSubmit={handleSubmit}
-              updateCurrentGuess={updateCurrentGuess}
-              deleteLastLetter = {deleteLastLetter}
-              randomizeLetters = {randomizeLetters}
+                currentGuess = {currentGuess}
+                letters= {letters}
+                center={center}
+                handleSubmit={handleSubmit}
+                updateCurrentGuess={updateCurrentGuess}
+                deleteLastLetter = {deleteLastLetter}
+                randomizeLetters = {randomizeLetters}
               />
               <aside>
                 <Scoreboard

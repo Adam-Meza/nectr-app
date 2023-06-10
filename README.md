@@ -39,4 +39,3 @@ The learning goals for this project were:
   5. Run npm install 
   6. Run npm start
   7. Click the hyperlink where the project is running to launch the application in the web browser or enter http://localhost:3000/ into your web browser.
-
