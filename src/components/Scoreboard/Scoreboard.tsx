@@ -11,12 +11,13 @@ interface ScoreboardProps {
 };
 
 export const Scoreboard : React.FC <ScoreboardProps> = ({answers, addFavorite, unfavorite, checkFavorites}) => {
-  const correctAnswers = answers.map(answer => (
+  const correctAnswers = answers.map((answer, index) => (
     <WordCard 
       definition = {answer}
       addFavorite = {addFavorite}
       unfavorite = {unfavorite}
       checkFavorites = {checkFavorites}
+      key = {index}
       />
   ));
   

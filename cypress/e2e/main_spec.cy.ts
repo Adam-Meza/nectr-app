@@ -43,16 +43,14 @@ describe('Main Page', () => {
       .get('p').eq(3).should('have.text', 'verb')
       .get('p').eq(4).should('have.text', 'To coddle; to pamper somebody like an infant.')
       
-      cy.get('.scoreboard')
-        .get('.word-card')
-        .get('h3').should('have.text', 'baby')
+    cy.get('.scoreboard')
+      .get('.word-card')
+      .get('h3').should('have.text', 'baby')
     })
 
   it("should be able to randomize the letters", () => {
-      // cy.get('.App').then(($component) => {
-      //   const letters = $component[0].__vue__.$data.letters;
-      //   console.log(letters);
-      //   expect(letters).to.deep.equal(['N', 'E', 'G', 'B', 'A', 'M']);
-      // });
+    cy.get('.boardpiece').should('have.length', 7);
+    cy.get('.game-play-button').eq(1).click()
+    cy.get('.boardpiece').should('have.length', 7);
   });
 })

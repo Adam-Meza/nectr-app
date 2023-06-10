@@ -29,15 +29,17 @@ const App = () => {
 
   const fetchData = async () => {
     try {
-      fetchLetters().then((json) => {
-        const {letters, words, center} = cleanGameData(json);
-        setCenter(center);
-        setLetters(letters);
-        setWords(words);
-      });
-    } catch(error : any) {
+      const json = await fetchLetters();
+      if (!json.center) {
+        throw new Error('Invalid response format');
+      }
+      const { letters, words, center } = cleanGameData(json);
+      setCenter(center);
+      setLetters(letters);
+      setWords(words);
+    } catch (error) {
       setError("Something went wrong");
-    };
+    }
   };
  
   const getDefinition = async (word: String) => {
@@ -46,7 +48,6 @@ const App = () => {
       if (json.title) {
         setAnswers((prevAnswers) => [...prevAnswers, { meanings: [{partOfSpeech: '', definitions: [""]}], word: word, phonetic: ""}])
         throw (json);
-
       } else {
         const cleanedDefinition = cleanDefinitionData(json[0]);
         setDefinition(cleanedDefinition);  
@@ -143,7 +144,7 @@ const App = () => {
                   unfavorite = {unfavorite}
                   checkFavorites = {checkFavorites}
                 />
-                { !error && <DefinitionCard definition = {definition}/> }
+                { !error && <DefinitionCard definition = {definition} key ={Date.now()}/> }
                 { error && <ErrorMessage message= {error} /> }
               </aside>
             </section>

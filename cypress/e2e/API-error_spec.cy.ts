@@ -3,6 +3,7 @@ describe("API Error Handling", () => {
       cy.intercept('GET', 'https://freebee.fun/cgi-bin/today', {
         fixture: "game.json"
       }).intercept('GET', 'https://api.dictionaryapi.dev/api/v2/entries/en/baby', {
+        status: 500,
         body: {
           "title": "No Definitions Found",
           "message": "Sorry pal, we couldn't find definitions for the word you were looking for.",
