@@ -1,31 +1,18 @@
 .word-card {
   font-size: 12px;
+  margin: 0px;
+  padding: 0px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border: white 1px solid;
   color: white;
-  padding: 7px;
-  height: 30px;
   width: 90%;
   margin-bottom: 4px
-
 }
 
-.favorite-button, .unfavorite-button {
-  padding: 2px 0px;
-  width: 80px;
-  border: none;
-  color: white;
-}
-
-.favorite-button {
-  color: black;
-  background-color: rgb(255, 255, 255);
-}
-
-.unfavorite-button {
-  background-color: #d17225;
+.guess {
+  font-size: 15px;
+  margin: 1px;
 }
 

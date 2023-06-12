@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: flex-start;
   background-color: #435c3c;
+
 }
 
 body {
@@ -34,6 +35,11 @@ aside {
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+
+button {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
 }
 
 button:hover {
@@ -69,6 +75,11 @@ button :active {
     justify-content: center;
   }
 
+  .boardpiece{
+    width: 80px;
+    height: 80px;
+  }
+
   .game-play-button {
     padding: 2px;
     margin: 10px
@@ -85,10 +96,6 @@ button :active {
     margin: 0px;
   };
 
-  .header {
-    justify-content: space-evenly;
-  };
-
   .link-container {
     width: 50%;
     justify-content: space-around;
@@ -97,4 +104,28 @@ button :active {
   .current-guess {
     margin-bottom: 10px
   };
+
+  .link.active {
+    padding: 5px;
+  }
+
+  .title {
+    font-size: 24px;
+    padding: 5px;
+  }
+
+  .header {
+    padding-top: 10px;
+    align-items:flex-start;
+    justify-content: space-evenly;
+  };
+
+  h1 {
+    margin: 0px;
+  }
+
+  em {
+    margin: 0px;
+  }
+
 };

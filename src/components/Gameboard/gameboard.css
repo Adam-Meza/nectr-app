@@ -20,6 +20,7 @@ main {
 }
 
 .game-play-button{
+  color: black; 
   font-size: 14px;
   border: 0px;
   border-radius: 3px;

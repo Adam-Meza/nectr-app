@@ -5,33 +5,12 @@ import { WordProps } from "../../utilites";
 
 interface WordCardProps {
   definition: WordProps;
-  unfavorite: (word : any) => void
-  addFavorite: (definition : WordProps) => void;
-  checkFavorites: (word : String) => Boolean
-};
+}
 
-export const WordCard : React.FC<WordCardProps> = ({definition, addFavorite, unfavorite, checkFavorites}) => {
-  const[favorite, setFavorite] = useState<Boolean>(false);
-
-  useEffect(() => {
-    checkFavorites(definition.word) ? setFavorite(true) : setFavorite(false);
-  }, []);
-
-  const handleFavoriteToggle = () => {
-    if (!favorite) {
-      addFavorite(definition);
-      setFavorite(true);
-    } else {
-      unfavorite(definition);
-      setFavorite(false);
-    };
-  };
-
+export const WordCard : React.FC<WordCardProps> = ({definition}) => {
   return (
     <div className="word-card">
-      <h3>{definition.word}</h3>
-      {!favorite && <button className="favorite-button" onClick={() => handleFavoriteToggle()}>Favorite</button>}
-      {favorite && <button className="unfavorite-button" onClick={() => handleFavoriteToggle()}>Unfavorite</button>}
+      <p className="guess">{definition.word}</p>
     </div>
   );
 };

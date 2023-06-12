@@ -3,9 +3,8 @@ import { Header } from '../Header/Header';
 import { Gameboard } from '../Gameboard/Gameboard';
 import { ErrorMessage } from '../ErrorMessage/ErrorMessage';
 import { Switch, Route } from 'react-router-dom';
-import { fetchDefinition, fetchLetters } from '../../fetches';
+import { fetchDefinition, fetchLetters, fetchRandomLetters } from '../../fetches';
 import { cleanDefinitionData, WordProps, cleanGameData } from '../../utilites';
-import { Favorites } from '../Favorites/Favorites';
 import { Scoreboard } from '../Scoreboard/Scoreboard';
 import { DefinitionCard } from '../DefinitionCard/DefinitionCard';
 import { Stats } from '../Stats/Stats';
@@ -18,7 +17,6 @@ const App = () => {
         [words, setWords] = useState<String[]>([]),
         [currentGuess, setGuess] = useState<String>(''),
         [answers, setAnswers] = useState<WordProps[]>([]),
-        [favorites, setFavorites] = useState<WordProps[]>([]),
         [definition, setDefinition] = useState<WordProps>(
           { meanings: [{partOfSpeech: '', definitions: [""]}], word: "", phonetic: ""});
 
@@ -29,7 +27,7 @@ const App = () => {
 
   const fetchData = async () => {
     try {
-      const data = await fetchLetters();
+      const data = await fetchRandomLetters();
 
       if (!data.ok) {
         throw new Error();
@@ -38,9 +36,14 @@ const App = () => {
       const json = await data.json();
       const { letters, words, center } = cleanGameData(json);
 
+      setError('')
+      setAnswers([])
+      setGuess('')
+      setDefinition({ meanings: [{partOfSpeech: '', definitions: [""]}], word: "", phonetic: ""})
       setCenter(center);
       setLetters(letters);
       setWords(words);
+      
     } catch (error) {
       setError("Something went wrong");
     }
@@ -54,11 +57,11 @@ const App = () => {
         throw (data);
       }
 
-        const json = await data.json();
-        const cleanedDefinition = cleanDefinitionData(json[0]);
+      const json = await data.json();
+      const cleanedDefinition = cleanDefinitionData(json[0]);
 
-        setDefinition(cleanedDefinition);  
-        setAnswers((prevAnswers) => [...prevAnswers, cleanedDefinition]);  
+      setDefinition(cleanedDefinition);  
+      setAnswers((prevAnswers) => [...prevAnswers, cleanedDefinition]);  
 
     } catch (error : any) {
       setError(`${error.message}`);
@@ -103,31 +106,11 @@ const App = () => {
     });
     setLetters(shuffledLetters);
   };
-
-  //Functions for Word Cards
-  const unfavorite = (wordToUnfavorite : WordProps) => {
-    const updatedFavorites = favorites.filter(word => word !== wordToUnfavorite);
-    setFavorites([...updatedFavorites]);
-  };
-
-  const addFavorite = (newDefinition : WordProps ) => {
-    if (!favorites.includes(newDefinition)) {
-      setFavorites([...favorites, newDefinition]);
-    };
-  };
-
-  const checkFavorites = (word : String) => {
-    return favorites.find(fav => fav.word === word ) ? true : false;
-  };
   
   return (
     <div className="App">
-      <Header/>
+      <Header fetchData={fetchData}/>
       <Switch>
-        <Route exact path ="/favorites" render={() => (
-          <Favorites favorites ={favorites}/>
-          )}
-        />
         <Route exact path = "/stats" render={()=> (
           <Stats total={words} correctAnswers={answers}/>
           )}
@@ -147,9 +130,6 @@ const App = () => {
               <aside>
                 <Scoreboard
                   answers = {answers}
-                  addFavorite= {addFavorite}
-                  unfavorite = {unfavorite}
-                  checkFavorites = {checkFavorites}
                 />
                 { !error && <DefinitionCard definition = {definition} key ={Date.now()}/> }
                 { error && <ErrorMessage message= {error} /> }
