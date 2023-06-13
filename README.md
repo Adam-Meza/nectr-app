@@ -30,7 +30,7 @@ The learning goals for this project were:
   - practice github workflow including merges, PR requests
 
 ## Installation
-  Play the game in browser [here](https://nectr-app-veed-ko9w0qph2-adam-meza.vercel.app/) 
+  Play the game in browser [here](https://nectr-7aitiqhic-adam-meza.vercel.app/) 
 
   1. Fork this repository to your GitHub account.
   2. Copy SSH key on GitHub inside the code dropdown.
