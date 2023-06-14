@@ -3,23 +3,29 @@ import { Boardpiece } from "../Boardpiece/Boardpiece";
 import './gameboard.css'
 
 interface GameboardProps {
-  center: String;
-  letters: String[];
-  currentGuess: String;
+  center: string;
+  letters: string[];
+  currentGuess: string;
   deleteLastLetter: () => void;
   handleSubmit: () => void;
-  updateCurrentGuess : (letter : String) => void;
+  updateCurrentGuess : (letter : string) => void;
   randomizeLetters : () => void;
 };
 
 export const Gameboard : React.FC<GameboardProps> = ({randomizeLetters, deleteLastLetter, handleSubmit, currentGuess, center, letters, updateCurrentGuess}) => {
-  const boardPieces = letters.map((letter : String, index : number) => {
+  const boardPieces = letters.map((letter : string, index : number) => {
     return <Boardpiece updateCurrentGuess= {updateCurrentGuess} letter ={letter} key ={index}/>
   });
 
+  const handleInput = () => {
+    // const input = event.target.value;
+    // const lastLetter = input[input.length - 1];
+    // updateCurrentGuess(lastLetter);
+  }
+
   return (
     <main>
-        <h2 className="current-guess">{currentGuess}</h2>
+        <input type="text" value={currentGuess} autoFocus className="current-guess" onChange={()=> handleInput()}/>
       <section className = 'gameboard'>
         <div className="piece-container">
           {boardPieces[0]}
@@ -36,9 +42,9 @@ export const Gameboard : React.FC<GameboardProps> = ({randomizeLetters, deleteLa
         </div>
       </section>
       <div className ='button-container'>
-        <button className ="game-play-button" onClick={()=> deleteLastLetter()}>DELETE</button>
-        <button className ="game-play-button" onClick ={()=> randomizeLetters()}>RANDOMIZE</button>
-        <button className ="game-play-button" onClick = {() => handleSubmit()}>ENTER</button>
+        <button className ="game-play-button" onClick={()=> deleteLastLetter()}>Delete</button>
+        <button className ="game-play-button" onClick ={()=> randomizeLetters()}>Randomize</button>
+        <button className ="game-play-button" onClick = {() => handleSubmit()}>Enter</button>
       </div>
     </main>
   );

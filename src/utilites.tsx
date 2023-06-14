@@ -1,18 +1,18 @@
 export interface WordProps {
   meanings: MeaningProps[];
-  phonetic: String;
-  word: String;
+  phonetic: string;
+  word: string;
 };
 
 export interface MeaningProps {
-  partOfSpeech: String;
+  partOfSpeech: string;
   definitions: any;
 };
 
 export interface GameDataFetchProps {
-  center : String;
-  letters : String;
-  wordlist : String[];
+  center : string;
+  letters : string;
+  wordlist : string[];
   words: Number;
 };
 

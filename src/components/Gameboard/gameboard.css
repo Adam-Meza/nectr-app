@@ -9,7 +9,7 @@ main {
   margin: 0px 50px 50px 100px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   height: 100%;
 }
@@ -35,7 +35,24 @@ main {
 }
 
 .current-guess {
+  height: 40px;
+  width: 200px;
+  margin: 10px;
   color: white;
+  background-color: #435c3c;
+  border: none;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
   height: 30px;
   font-size: 36px;
+  caret-color: white;
+  animation: blink-caret 1s infinite;
+  text-align: center;
+  outline: none;
+}
+
+@keyframes blink-caret {
+  50% {
+    border-color: white;
+  }
 }
