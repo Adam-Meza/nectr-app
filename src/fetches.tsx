@@ -24,3 +24,18 @@ export const fetchLetters = async () => {
     throw error;
   }
 };
+
+export const fetchRandomLetters = async () => {
+  try {
+    const response = await fetch('https://freebee.fun/cgi-bin/random');
+    if (response.status >= 400 && response.status <= 599) {
+      throw new Error('Network response was not OK');
+    }
+
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
+
+

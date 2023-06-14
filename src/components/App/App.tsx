@@ -3,24 +3,24 @@ import { Header } from '../Header/Header';
 import { Gameboard } from '../Gameboard/Gameboard';
 import { ErrorMessage } from '../ErrorMessage/ErrorMessage';
 import { Switch, Route } from 'react-router-dom';
-import { fetchDefinition, fetchLetters } from '../../fetches';
+import { fetchDefinition, fetchLetters, fetchRandomLetters } from '../../fetches';
 import { cleanDefinitionData, WordProps, cleanGameData } from '../../utilites';
-import { Favorites } from '../Favorites/Favorites';
 import { Scoreboard } from '../Scoreboard/Scoreboard';
 import { DefinitionCard } from '../DefinitionCard/DefinitionCard';
-import { Stats } from '../Stats/Stats';
+import { About } from '../About/About';
 import './App.css';
 
 const App = () => {
-  const [error, setError] = useState<String>(''),
-        [center, setCenter] = useState<String>(''),
-        [letters, setLetters] = useState<String[]>([]),
-        [words, setWords] = useState<String[]>([]),
-        [currentGuess, setGuess] = useState<String>(''),
+  const [error, setError] = useState<string>(''),
+        [loading, setLoading] = useState<boolean>(true),
+        [center, setCenter] = useState<string>(''),
+        [letters, setLetters] = useState<string[]>([]),
+        [words, setWords] = useState<string[]>([]),
+        [currentGuess, setGuess] = useState<string>(''),
         [answers, setAnswers] = useState<WordProps[]>([]),
-        [favorites, setFavorites] = useState<WordProps[]>([]),
         [definition, setDefinition] = useState<WordProps>(
           { meanings: [{partOfSpeech: '', definitions: [""]}], word: "", phonetic: ""});
+
 
   // Fetch Calls
   useEffect(() => {
@@ -28,25 +28,32 @@ const App = () => {
   }, []);
 
   const fetchData = async () => {
+    setLoading(true)
     try {
-      const data = await fetchLetters();
-
+      const data = await fetchRandomLetters();
       if (!data.ok) {
         throw new Error();
       }
 
       const json = await data.json();
       const { letters, words, center } = cleanGameData(json);
+      
+      setError('');
+      setAnswers([]);
+      setGuess('');
+      setDefinition({ meanings: [{partOfSpeech: '', definitions: [""]}], word: "", phonetic: ""});
 
+      setLoading(false);
       setCenter(center);
       setLetters(letters);
       setWords(words);
+      
     } catch (error) {
       setError("Something went wrong");
     }
   };
  
-  const getDefinition = async (word: String) => {
+  const getDefinition = async (word: string) => {
     try {
       const data = await fetchDefinition(word);
       if (!data.ok) {
@@ -54,15 +61,15 @@ const App = () => {
         throw (data);
       }
 
-        const json = await data.json();
-        const cleanedDefinition = cleanDefinitionData(json[0]);
+      const json = await data.json();
+      const cleanedDefinition = cleanDefinitionData(json[0]);
 
-        setDefinition(cleanedDefinition);  
-        setAnswers((prevAnswers) => [...prevAnswers, cleanedDefinition]);  
+      setDefinition(cleanedDefinition);  
+      setAnswers((prevAnswers) => [...prevAnswers, cleanedDefinition]);  
 
     } catch (error : any) {
       setError(`${error.message}`);
-    }
+    };
   };
 
   //Submission Functions
@@ -72,7 +79,7 @@ const App = () => {
     setGuess('');
   };
 
-  const checkGuess = (guess : String) : void => {
+  const checkGuess = (guess : string) : void => {
     guess = guess.toLowerCase();
     if (words.includes(guess.toLowerCase())) { 
       const newWords = words.filter(word => word !== guess);
@@ -93,7 +100,7 @@ const App = () => {
     setGuess(currentGuess.slice(0, -1));
   };
 
-  const updateCurrentGuess = (letter : String)  : void => {
+  const updateCurrentGuess = (letter : string)  : void => {
     setGuess([currentGuess, letter].join(''));
   };
 
@@ -103,57 +110,39 @@ const App = () => {
     });
     setLetters(shuffledLetters);
   };
-
-  //Functions for Word Cards
-  const unfavorite = (wordToUnfavorite : WordProps) => {
-    const updatedFavorites = favorites.filter(word => word !== wordToUnfavorite);
-    setFavorites([...updatedFavorites]);
-  };
-
-  const addFavorite = (newDefinition : WordProps ) => {
-    if (!favorites.includes(newDefinition)) {
-      setFavorites([...favorites, newDefinition]);
-    };
-  };
-
-  const checkFavorites = (word : String) => {
-    return favorites.find(fav => fav.word === word ) ? true : false;
-  };
   
   return (
     <div className="App">
-      <Header/>
+      <Header fetchData={fetchData}/>
       <Switch>
-        <Route exact path ="/favorites" render={() => (
-          <Favorites favorites ={favorites}/>
-          )}
-        />
-        <Route exact path = "/stats" render={()=> (
-          <Stats total={words} correctAnswers={answers}/>
+        <Route exact path = "/about" render={()=> (
+          <About />
           )}
         />
         <Route exact path ="/" 
           render = { () => (
             <section className ='home-display'>
-              <Gameboard 
-                currentGuess = {currentGuess}
-                letters= {letters}
-                center={center}
-                handleSubmit={handleSubmit}
-                updateCurrentGuess={updateCurrentGuess}
-                deleteLastLetter = {deleteLastLetter}
-                randomizeLetters = {randomizeLetters}
-              />
-              <aside>
-                <Scoreboard
-                  answers = {answers}
-                  addFavorite= {addFavorite}
-                  unfavorite = {unfavorite}
-                  checkFavorites = {checkFavorites}
-                />
-                { !error && <DefinitionCard definition = {definition} key ={Date.now()}/> }
-                { error && <ErrorMessage message= {error} /> }
-              </aside>
+              { loading &&  <h2 className ='loading'>Loading...</h2> }
+              { !loading &&
+                <>
+                  <Gameboard 
+                    currentGuess = {currentGuess}
+                    letters= {letters}
+                    center={center}
+                    handleSubmit={handleSubmit}
+                    updateCurrentGuess={updateCurrentGuess}
+                    deleteLastLetter = {deleteLastLetter}
+                    randomizeLetters = {randomizeLetters}
+                  />
+                  <aside>
+                    <Scoreboard
+                      answers = {answers}
+                    />
+                    { !error && <DefinitionCard definition = {definition} key ={Date.now()}/> }
+                    { error && <ErrorMessage message= {error} /> }
+                  </aside>
+                </>
+              }
             </section>
           )}
         />

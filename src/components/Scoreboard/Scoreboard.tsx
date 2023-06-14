@@ -5,18 +5,12 @@ import { WordProps } from "../../utilites";
 
 interface ScoreboardProps {
   answers : WordProps[];
-  addFavorite: (definition : WordProps) => void;
-  unfavorite : (word : any) => void;
-  checkFavorites: (word : String) => Boolean
 };
 
-export const Scoreboard : React.FC <ScoreboardProps> = ({answers, addFavorite, unfavorite, checkFavorites}) => {
+export const Scoreboard : React.FC <ScoreboardProps> = ({answers}) => {
   const correctAnswers = answers.map((answer, index) => (
     <WordCard 
       definition = {answer}
-      addFavorite = {addFavorite}
-      unfavorite = {unfavorite}
-      checkFavorites = {checkFavorites}
       key = {index}
       />
   ));
