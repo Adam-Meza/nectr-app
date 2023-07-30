@@ -9,9 +9,11 @@ interface HeaderProps {
 export const Header : React.FC<HeaderProps> = ({fetchData}) => {
   return ( 
     <header className="header">
-      <h1><em><NavLink className ="link title"to='/'>nectr</NavLink></em></h1>
-        <NavLink className ="link nav-link"to='/about'>about</NavLink>
-        <button onClick={() => fetchData() } className ="link nav-link">new game</button>
+      <h1><em><NavLink className =" title"to='/'>nectr</NavLink></em></h1>
+      <div className="link-container">
+        <NavLink className ="about"to='/about'>about</NavLink>
+        <button onClick={() => fetchData() } className ="new-game">new game</button>
+      </div>
     </header>
   )
 }
