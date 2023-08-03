@@ -3,8 +3,8 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100vw;
-  height: 8%;
+  width: 100%;
+  height: 7%;
   border-bottom: 1px solid #d17225;
 }
 
@@ -18,33 +18,43 @@
 }
 
 .about, .new-game {
-  width: 10rem
+  font-size: 12px;
+  margin: 0px, 20px;
+  border-radius: 10px;
 }
 
 .about {
-  background-color: white;
-  color: #d17225;
+  height: 2rem;
+  width: 5rem;
+  border: 1px solid white;
+  color: white;
 }
 
 .about:hover, .about:active{
-  background-color: lightgrey;
+  color: rgb(205,205,205);
+
 }
 
-.new-game{
+.new-game {
+  width:5rem;
+  height: 2rem;
+  color: white;
   background-color: #d17225;
 }
 
 .title, h1 {
   color:white;
   margin: 0px;
+  margin-left: 20px;
   font-size: 36px;
 }
 
 .link-container {
+  flex-wrap: wrap;
   height: 100%;
-  width: 50%;
+  width: 20rem;
   display: flex;
   flex-direction: row;
-  align-content: flex-end;
-  justify-content: flex-end;
+  align-content: center;
+  justify-content: space-evenly;
 }

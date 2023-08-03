@@ -124,7 +124,7 @@ const App = () => {
             <section className ='home-display'>
               { loading &&  <h2 className ='loading'>Loading...</h2> }
               { !loading &&
-                <>
+                <section className='main-content-wrapper'>
                   <Gameboard 
                     currentGuess = {currentGuess}
                     letters= {letters}
@@ -141,7 +141,7 @@ const App = () => {
                     { !error && <DefinitionCard definition = {definition} key ={Date.now()}/> }
                     { error && <ErrorMessage message= {error} /> }
                   </aside>
-                </>
+                </section>
               }
             </section>
           )}
