@@ -72,7 +72,7 @@ const App = () => {
     };
   };
 
-  //Submission Functions
+  //Gameplay Funcitons 
   const handleSubmit = ()  : void => {
     setError('');
     checkGuess(currentGuess);
