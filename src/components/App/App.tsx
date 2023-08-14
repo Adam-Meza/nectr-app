@@ -8,6 +8,7 @@ import { cleanDefinitionData, WordProps, cleanGameData } from '../../utilites';
 import { Scoreboard } from '../Scoreboard/Scoreboard';
 import { DefinitionCard } from '../DefinitionCard/DefinitionCard';
 import { About } from '../About/About';
+import Loading from '../Loading/Loading';
 import './App.css';
 
 const App = () => {
@@ -122,7 +123,7 @@ const App = () => {
         <Route exact path ="/" 
           render = { () => (
             <section className ='home-display'>
-              { loading &&  <h2 className ='loading'>Loading...</h2> }
+              { loading &&  <Loading/> }
               { !loading &&
                 <section className='main-content-wrapper'>
                   <Gameboard 

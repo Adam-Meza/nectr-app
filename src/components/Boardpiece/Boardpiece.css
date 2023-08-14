@@ -1,6 +1,7 @@
 .boardpiece {
-  color:#6d4b1b;
-  background-color: rgb(240, 240, 240);
+  color:#956421;
+  font-family: 'Gothic A1';
+  background-color: rgb(255, 255, 255);
   border: none;
   width: 80px;
   height: 80px;
@@ -8,6 +9,10 @@
   border-radius: 50%;
   font-size: 27px;
   transform: translateY(2px);
+}
+
+strong {
+  font-family: 'Gothic A1';
 }
 
 #center {

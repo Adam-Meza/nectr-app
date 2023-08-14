@@ -18,7 +18,7 @@
 }
 
 .about, .new-game {
-  font-size: 12px;
+  font-size: 16px;
   margin: 0px, 20px;
   border-radius: 10px;
 }
@@ -32,11 +32,10 @@
 
 .about:hover, .about:active{
   color: rgb(205,205,205);
-
 }
 
 .new-game {
-  width:5rem;
+  width: 7rem;
   height: 2rem;
   color: white;
   background-color: #d17225;
