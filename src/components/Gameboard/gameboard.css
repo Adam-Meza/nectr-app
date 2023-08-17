@@ -6,12 +6,13 @@
 }
 
 main {
-  margin: 20px 50px 50px 100px;
+  margin: 0px 50px 50px 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 99%;
+  width: 30rem;
 }
 
 .gameboard {
@@ -20,13 +21,16 @@ main {
 }
 
 .game-play-button{
+  background-color: white;
   color: black; 
   font-size: 14px;
   border: 0px;
   border-radius: 5px;
-  margin: 20px;
+  margin: .5rem;
   height: 40px;
   width: 100px;
+  font-family: 'Gothic A1';
+  font-weight: bold;
 }
 
 .game-play-button:active {
@@ -41,8 +45,8 @@ main {
   color: white;
   background-color: #435c3c;
   border: none;
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-  monospace;
+  font-family: 'Gothic A1';
+  font-weight: bold;
   height: 30px;
   font-size: 36px;
   caret-color: white;

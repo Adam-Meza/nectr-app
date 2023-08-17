@@ -2,7 +2,6 @@
   background-size: cover;
   width: 100%;
   height: 90vh;
-  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,8 +9,6 @@
   background-color: #435c3c;
   padding-bottom: 20px;
 }
-
-
 
 * {
   font-family: 'Manrope', sans-serif;
@@ -40,15 +37,13 @@ body {
   justify-content: center;
 }
 
-
-
 aside {
   margin: 0px 100px 0px 0px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  width: 25%
+  width: 30rem
 }
 
 .home-display {
@@ -56,11 +51,6 @@ aside {
   flex-direction: row;
   justify-content: center;
 }
-
-/* button {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-  monospace;
-} */
 
 button:hover {
   cursor: pointer;
@@ -81,12 +71,16 @@ button :active {
 }
 
 .loading {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-  monospace;
   color: white;
 }
 
-@media (max-width : 1000px) {
+@media(max-width: 1000px) {
+  .game-play-button {
+    width: 5rem;
+  }
+}
+
+@media (max-width : 850px) {
 
 /* main */
   .home-display, .main-content-wrapper {
@@ -95,6 +89,11 @@ button :active {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .main-content-wrapper {
+    flex-direction: column-reverse;
+    justify-content: flex-end;
   }
 
   main {
@@ -126,32 +125,22 @@ button :active {
   /* main display not gameboard stuff*/
 
   aside {
-    align-items: center;
-    justify-content: center;
-    margin: 0px;
-    width: 50%;
-  }
-
-  .word {
-    margin: 0px 20px 0px 0px;
-  };
-
-  .current-guess {
-    margin-bottom: 10px
-  };
-
-  .definition {
     display: none;
   }
 
+  .current-guess {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+  };
+
   .scoreboard {
-    min-height: 100px;
+    display: none;
   }
 
 /* related to the header */
 
   .link-container {
-    width: 35%;
+    width: 40%;
     justify-content: space-between;
   };
 
@@ -177,13 +166,5 @@ button :active {
     margin: 0px;
   }
 
-
-@media (max-width : 815px) {
-  .home-display, .main-content-wrapper {
-    flex-direction: column;
-  }
-
-
-}
 };
 
