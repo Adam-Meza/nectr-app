@@ -6,12 +6,13 @@
 }
 
 main {
-  margin: 20px 50px 50px 100px;
+  margin: 0px 50px 50px 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 99%;
+  width: 30rem;
 }
 
 .gameboard {
@@ -25,7 +26,7 @@ main {
   font-size: 14px;
   border: 0px;
   border-radius: 5px;
-  margin: 20px;
+  margin: .5rem;
   height: 40px;
   width: 100px;
   font-family: 'Gothic A1';

@@ -9,6 +9,7 @@ import { Scoreboard } from '../Scoreboard/Scoreboard';
 import { DefinitionCard } from '../DefinitionCard/DefinitionCard';
 import { About } from '../About/About';
 import Loading from '../Loading/Loading';
+import Dropdown from '../Dropdown/Dropdown';
 import './App.css';
 
 const App = () => {
@@ -18,14 +19,23 @@ const App = () => {
         [letters, setLetters] = useState<string[]>([]),
         [words, setWords] = useState<string[]>([]),
         [currentGuess, setGuess] = useState<string>(''),
+        [windowWidth, setWindowWidth] = useState(window.innerWidth),
         [answers, setAnswers] = useState<WordProps[]>([]),
         [definition, setDefinition] = useState<WordProps>(
           { meanings: [{partOfSpeech: '', definitions: [""]}], word: "", phonetic: ""});
 
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
 
   // Fetch Calls
   useEffect(() => {
     fetchData();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   const fetchData = async () => {
@@ -142,6 +152,7 @@ const App = () => {
                     { !error && <DefinitionCard definition = {definition} key ={Date.now()}/> }
                     { error && <ErrorMessage message= {error} /> }
                   </aside>
+                  {windowWidth < 850 && <Dropdown answers={answers}/>}
                 </section>
               }
             </section>
