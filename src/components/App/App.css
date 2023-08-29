@@ -140,12 +140,12 @@ button :active {
 /* related to the header */
 
   .link-container {
-    width: 40%;
-    justify-content: space-between;
+    width: 30%;
+    justify-content: space-evenly;
   };
 
   .about {
-    background-color: aqua;
+    display: none;
   }
 
   .title {
@@ -155,7 +155,7 @@ button :active {
 
   .header {
     align-items:flex-end;
-    height: 7%
+    height: 11%
   };
 
   h1 {
@@ -168,3 +168,8 @@ button :active {
 
 };
 
+@media (max-width: 600px) {
+  .App {
+    background-color: bisque;
+  }
+}

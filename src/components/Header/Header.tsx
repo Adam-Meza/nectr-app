@@ -9,6 +9,7 @@ interface HeaderProps {
 
 export const Header : React.FC<HeaderProps> = ({fetchData}) => {
   const history = useHistory();
+  const windowWidth = window.innerWidth
 
   const handleClick = () => {
     fetchData()
@@ -19,7 +20,7 @@ export const Header : React.FC<HeaderProps> = ({fetchData}) => {
     <header className="header">
       <h1><em><NavLink className =" title"to='/'>nectr</NavLink></em></h1>
       <div className="link-container">
-        <NavLink className ="about" to='/about'>ABOUT</NavLink>
+        { windowWidth > 700 ? <NavLink className ="about" to='/about'>ABOUT</NavLink> : null}
         <button onClick={() => handleClick() } className ="new-game">NEW GAME</button>
       </div>
     </header>
