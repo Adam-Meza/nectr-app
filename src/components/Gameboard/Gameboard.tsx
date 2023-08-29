@@ -17,15 +17,19 @@ export const Gameboard : React.FC<GameboardProps> = ({randomizeLetters, deleteLa
     return <Boardpiece updateCurrentGuess= {updateCurrentGuess} letter ={letter} key ={index}/>
   });
 
-  const handleInput = () => {
-    // const input = event.target.value;
-    // const lastLetter = input[input.length - 1];
-    // updateCurrentGuess(lastLetter);
-  }
+  const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const input = event.target.value;
+    updateCurrentGuess(input); 
+  };
 
   return (
     <main>
-        <input type="text" value={currentGuess} autoFocus className="current-guess" onChange={()=> handleInput()}/>
+      <input
+        type="text"
+        autoFocus
+        className="current-guess"
+        onChange={handleInput} // Use the handleInput function for input change event
+      />      
       <section className = 'gameboard'>
         <div className="piece-container">
           {boardPieces[0]}
