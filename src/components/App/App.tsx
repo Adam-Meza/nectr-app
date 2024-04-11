@@ -8,7 +8,6 @@ import { cleanDefinitionData, WordProps } from "../../utilites";
 import { Scoreboard } from "../Scoreboard/Scoreboard";
 import { DefinitionCard } from "../DefinitionCard/DefinitionCard";
 import { About } from "../About/About";
-import Loading from "../Loading/Loading";
 import Dropdown from "../Dropdown/Dropdown";
 import "./App.css";
 
@@ -17,7 +16,6 @@ const App = () => {
     [loading, setLoading] = React.useState<boolean>(false),
     [center, setCenter] = React.useState<string>(""),
     [letters, setLetters] = React.useState<string[]>([]),
-    [words, setWords] = React.useState<string[]>([]),
     [currentGuess, setGuess] = React.useState<string>(""),
     [windowWidth, setWindowWidth] = React.useState(window.innerWidth),
     [answers, setAnswers] = React.useState<WordProps[]>([]),
@@ -161,31 +159,25 @@ const App = () => {
           path="/"
           render={() => (
             <section className="home-display">
-              {loading && <Loading />}
-              {!loading && (
-                <section className="main-content-wrapper">
-                  <Gameboard
-                    currentGuess={currentGuess}
-                    letters={letters}
-                    center={center}
-                    handleSubmit={handleSubmit}
-                    updateCurrentGuess={updateCurrentGuess}
-                    deleteLastLetter={deleteLastLetter}
-                    randomizeLetters={randomizeLetters}
-                  />
-                  <aside>
-                    <Scoreboard answers={answers} />
-                    {!error && (
-                      <DefinitionCard
-                        definition={definition}
-                        key={Date.now()}
-                      />
-                    )}
-                    {error && <ErrorMessage message={error} />}
-                  </aside>
-                  {windowWidth < 850 && <Dropdown answers={answers} />}
-                </section>
-              )}
+              <section className="main-content-wrapper">
+                <Gameboard
+                  currentGuess={currentGuess}
+                  letters={letters}
+                  center={center}
+                  handleSubmit={handleSubmit}
+                  updateCurrentGuess={updateCurrentGuess}
+                  deleteLastLetter={deleteLastLetter}
+                  randomizeLetters={randomizeLetters}
+                />
+                <aside>
+                  <Scoreboard answers={answers} />
+                  {!error && (
+                    <DefinitionCard definition={definition} key={Date.now()} />
+                  )}
+                  {error && <ErrorMessage message={error} />}
+                </aside>
+                {windowWidth < 850 && <Dropdown answers={answers} />}
+              </section>
             </section>
           )}
         />
