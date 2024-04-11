@@ -4,7 +4,7 @@ import { Gameboard } from "../Gameboard/Gameboard";
 import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
 import { Switch, Route } from "react-router-dom";
 import { fetchDefinition } from "../../fetches";
-import { cleanDefinitionData, WordProps } from "../../utilites";
+import { cleanDefinitionData, WordProps, WordBase } from "../../utilites";
 import { Scoreboard } from "../Scoreboard/Scoreboard";
 import { DefinitionCard } from "../DefinitionCard/DefinitionCard";
 import { About } from "../About/About";
@@ -18,11 +18,7 @@ const App = () => {
     [currentGuess, setGuess] = React.useState<string>(""),
     [windowWidth, setWindowWidth] = React.useState(window.innerWidth),
     [answers, setAnswers] = React.useState<WordProps[]>([]),
-    [definition, setDefinition] = React.useState<WordProps>({
-      meanings: [{ partOfSpeech: "", definitions: [""] }],
-      word: "",
-      phonetic: "",
-    });
+    [definition, setDefinition] = React.useState<WordProps>(WordBase);
 
   const handleResize = () => {
     setWindowWidth(window.innerWidth);
@@ -88,14 +84,6 @@ const App = () => {
     try {
       const data = await fetchDefinition(word);
       if (!data.ok) {
-        setAnswers((prevAnswers) => [
-          ...prevAnswers,
-          {
-            meanings: [{ partOfSpeech: "", definitions: [""] }],
-            word: word,
-            phonetic: "",
-          },
-        ]);
         throw data;
       }
 
@@ -134,7 +122,6 @@ const App = () => {
     }
   };
 
-  // Funcitons for Gameplay Buttons
   const deleteLastLetter = (): void => {
     setGuess(currentGuess.slice(0, -1));
   };

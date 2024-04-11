@@ -1,15 +1,23 @@
 import React from "react";
-import './Boardpiece.css'
+import "./Boardpiece.css";
 
 interface BoardpieceProps {
-  letter : string;
+  letter: string;
   id?: string;
-  updateCurrentGuess : (letter : string) => void;
-};
+  updateCurrentGuess: (letter: string) => void;
+}
 
-export const Boardpiece : React.FC<BoardpieceProps> = ({letter, updateCurrentGuess, id}) => {
+export const Boardpiece: React.FC<BoardpieceProps> = ({
+  letter,
+  updateCurrentGuess,
+  id,
+}) => {
   return (
-    <button className = 'boardpiece' onClick={() => updateCurrentGuess(letter)} id ={id}>
+    <button
+      className="boardpiece"
+      onClick={() => updateCurrentGuess(letter)}
+      id={id}
+    >
       <strong>{letter}</strong>
     </button>
   );
