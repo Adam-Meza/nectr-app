@@ -13,7 +13,6 @@ import "./App.css";
 
 const App = () => {
   const [error, setError] = React.useState<string>(""),
-    [loading, setLoading] = React.useState<boolean>(false),
     [center, setCenter] = React.useState<string>(""),
     [letters, setLetters] = React.useState<string[]>([]),
     [currentGuess, setGuess] = React.useState<string>(""),
@@ -74,7 +73,7 @@ const App = () => {
     }, []);
 
     return {
-      center: center.toUpperCase(),
+      center: center,
       letters: letters,
     };
   };
@@ -101,8 +100,7 @@ const App = () => {
       }
 
       const json = await data.json();
-      const cleanedDefinition = cleanDefinitionData(json[0]);
-      return cleanedDefinition;
+      return cleanDefinitionData(json[0]);
     } catch (error: any) {
       return false;
     }
@@ -126,6 +124,7 @@ const App = () => {
       setError("You already got that word!");
       return;
     } else if (definition) {
+      setAnswers((prevAnswers) => [...prevAnswers, definition]);
       setGuess("");
       setDefinition(definition);
       return;
@@ -149,6 +148,16 @@ const App = () => {
     setLetters(shuffledLetters);
   };
 
+  const gameBoardProps = {
+    currentGuess: currentGuess,
+    letters: letters,
+    center: center,
+    handleSubmit: handleSubmit,
+    updateCurrentGuess: updateCurrentGuess,
+    deleteLastLetter: deleteLastLetter,
+    randomizeLetters: randomizeLetters,
+  };
+
   return (
     <div className="App">
       <Header fetchData={setNewGame} />
@@ -160,15 +169,7 @@ const App = () => {
           render={() => (
             <section className="home-display">
               <section className="main-content-wrapper">
-                <Gameboard
-                  currentGuess={currentGuess}
-                  letters={letters}
-                  center={center}
-                  handleSubmit={handleSubmit}
-                  updateCurrentGuess={updateCurrentGuess}
-                  deleteLastLetter={deleteLastLetter}
-                  randomizeLetters={randomizeLetters}
-                />
+                <Gameboard props={gameBoardProps} />
                 <aside>
                   <Scoreboard answers={answers} />
                   {!error && (
