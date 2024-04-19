@@ -1,14 +1,18 @@
 import React from "react";
+import { Switch, Route } from "react-router-dom";
 import { Header } from "../Header/Header";
 import { Gameboard } from "../Gameboard/Gameboard";
 import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
-import { Switch, Route } from "react-router-dom";
-import { fetchDefinition } from "../../fetches";
-import { cleanDefinitionData, WordProps, WordBase } from "../../utilites";
 import { Scoreboard } from "../Scoreboard/Scoreboard";
 import { DefinitionCard } from "../DefinitionCard/DefinitionCard";
 import { About } from "../About/About";
-import Dropdown from "../Dropdown/Dropdown";
+import {
+  cleanDefinitionData,
+  WordProps,
+  WordBase,
+  fetchDefinition,
+} from "../../utilites";
+import { Dropdown } from "../Dropdown/Dropdown";
 import "./App.css";
 
 const App = () => {
@@ -28,45 +32,40 @@ const App = () => {
   React.useEffect(() => {
     setNewGame();
 
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return window.addEventListener("resize", handleResize);
   }, []);
 
-  const getRandomLetter: (lettersToCompare: string[]) => any = (
-    lettersToCompare: string[]
+  const getRandomLetter: (lettersToCompare: string[], vowel: boolean) => any = (
+    lettersToCompare: string[],
+    vowel: boolean
   ) => {
-    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const index = Math.floor(Math.random() * alphabet.length);
-    const letter = alphabet[index];
+    const letters = vowel ? "AEIOU" : "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const index = Math.floor(Math.random() * letters.length);
+    const letter = letters[index];
 
-    if (lettersToCompare?.includes(letter)) {
-      return getRandomLetter(lettersToCompare);
-    } else {
-      return letter;
-    }
+    if (lettersToCompare?.includes(letter))
+      return getRandomLetter(lettersToCompare, vowel);
+    else return letter;
   };
 
   const clearBoard = () => {
     setError("");
     setAnswers([]);
     setGuess("");
-    setDefinition({
-      meanings: [{ partOfSpeech: "", definitions: [""] }],
-      word: "",
-      phonetic: "",
-    });
+    setDefinition(WordBase);
   };
 
   const createGameData = () => {
-    const center = getRandomLetter([]);
-    const letters = [1, 2, 3, 4, 5, 6].reduce((acc: string[], num) => {
-      const letter = getRandomLetter(acc);
-      acc.push(letter);
-      return acc;
-    }, []);
+    const center = getRandomLetter([], false);
+    let letters: string[] = [];
+    let i = 0;
+
+    while (i < 6) {
+      const vowel = i < 2 ? true : false;
+      const letter = getRandomLetter([center, ...letters], vowel);
+      letters.push(letter);
+      i++;
+    }
 
     return {
       center: center,
@@ -75,9 +74,11 @@ const App = () => {
   };
 
   const setNewGame = () => {
+    const gameData = createGameData();
+
     clearBoard();
-    setCenter(createGameData().center);
-    setLetters(createGameData().letters);
+    setCenter(gameData.center);
+    setLetters(gameData.letters);
   };
 
   const getDefinition = async (word: string) => {
@@ -103,17 +104,19 @@ const App = () => {
 
   const checkGuess = async (guess: string) => {
     const definition = await getDefinition(guess);
+    setGuess("");
 
     if (guess.length < 4) {
       setError("Guesses must be at least 4 letters!");
       return;
+    } else if (!guess.includes(center)) {
+      setError("Guess must contain the middle letter!");
+      return;
     } else if (answers.find((answer) => answer.word === guess)) {
-      setGuess("");
       setError("You already got that word!");
       return;
     } else if (definition) {
       setAnswers((prevAnswers) => [...prevAnswers, definition]);
-      setGuess("");
       setDefinition(definition);
       return;
     } else {
@@ -147,7 +150,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header fetchData={setNewGame} />
+      <Header startNewGame={setNewGame} />
       <Switch>
         <Route exact path="/about" render={() => <About />} />
         <Route

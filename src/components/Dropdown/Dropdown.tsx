@@ -6,7 +6,7 @@ interface DropdownProps {
   answers: any[];
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ answers }) => {
+export const Dropdown: React.FC<DropdownProps> = ({ answers }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState<string>("");
 
@@ -38,4 +38,3 @@ const Dropdown: React.FC<DropdownProps> = ({ answers }) => {
   );
 };
 
-export default Dropdown;

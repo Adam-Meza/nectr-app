@@ -4,15 +4,15 @@ import "./header.css";
 import { useHistory } from "react-router-dom";
 
 interface HeaderProps {
-  fetchData: () => void;
+  startNewGame: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ fetchData }) => {
+export const Header: React.FC<HeaderProps> = ({ startNewGame }) => {
   const history = useHistory();
   const windowWidth = window.innerWidth;
 
   const handleClick = () => {
-    fetchData();
+    startNewGame();
     history.push("/");
   };
 
