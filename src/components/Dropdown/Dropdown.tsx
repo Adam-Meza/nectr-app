@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import './Dropdown.css'
-import { motion } from 'framer-motion';
+import React, { useState } from "react";
+import "./Dropdown.css";
+import { motion } from "framer-motion";
 
 interface DropdownProps {
   answers: any[];
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ answers }) => {
+export const Dropdown: React.FC<DropdownProps> = ({ answers }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedAnswer, setSelectedAnswer] = useState<string>('');
+  const [selectedAnswer, setSelectedAnswer] = useState<string>("");
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -22,10 +22,7 @@ const Dropdown: React.FC<DropdownProps> = ({ answers }) => {
   return (
     <div className="dropdown">
       Your answers...
-      <motion.button 
-        className="dropdown-button"
-        onClick={toggleDropdown}
-      >
+      <motion.button className="dropdown-button" onClick={toggleDropdown}>
         ⌄
       </motion.button>
       {isOpen && (
@@ -41,4 +38,3 @@ const Dropdown: React.FC<DropdownProps> = ({ answers }) => {
   );
 };
 
-export default Dropdown;

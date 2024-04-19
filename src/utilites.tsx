@@ -1,41 +1,43 @@
-export interface WordProps {
-  meanings: MeaningProps[];
-  phonetic: string;
-  word: string;
+export const WordBase = {
+  meanings: [{ partOfSpeech: "", definitions: [""] }],
+  word: "",
+  phonetic: "",
 };
+
+export type WordProps = typeof WordBase;
 
 export interface MeaningProps {
   partOfSpeech: string;
   definitions: any;
-};
+}
 
-export interface GameDataFetchProps {
-  center : string;
-  letters : string;
-  wordlist : string[];
-  words: Number;
-};
-
-export const cleanDefinitionData = (definition : WordProps) => {
-  const selectedMeanings = definition.meanings.map((meaning : MeaningProps) => {
+export const cleanDefinitionData = (definition: WordProps) => {
+  const selectedMeanings = definition.meanings.map((meaning: MeaningProps) => {
     return {
       partOfSpeech: meaning.partOfSpeech,
-      definitions: meaning.definitions[0].definition
+      definitions: meaning.definitions[0].definition,
     };
   });
-  
+
   return {
     word: definition.word,
     phonetic: definition.phonetic,
-    meanings: selectedMeanings
+    meanings: selectedMeanings,
   };
 };
 
-export const cleanGameData = (data: GameDataFetchProps) => {
-  return {
-    center: data.center.toUpperCase(),
-    letters: data.letters.toUpperCase().split(''),
-    words: data.wordlist,
-    amountOfWords: data.words
-  };
+export const fetchDefinition = async (word: String) => {
+  try {
+    const response = await fetch(
+      `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
+    );
+
+    if (response.status >= 400 && response.status <= 599) {
+      throw new Error("Network response was not OK");
+    }
+
+    return response;
+  } catch (error) {
+    throw error;
+  }
 };
